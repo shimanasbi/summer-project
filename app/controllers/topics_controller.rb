@@ -11,15 +11,15 @@ class TopicsController < ApplicationController
       flash.now[:alert] = "投稿に失敗しました…"
       render :new
     end
-
-    private
-    def topics_params
-      params.require(:topic).permit(:image, :description)
-    end
-
-    def index
-      @topics = Topic.all
-    end
-
   end
+
+  def index
+    @topics = Topic.all
+  end
+
+  private
+  def topic_params
+    params.require(:topic).permit(:image, :description)
+  end
+
 end

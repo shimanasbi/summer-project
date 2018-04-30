@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  get 'topics/new'
-  get 'sessions/new'
-  root 'pages#index'
-  get 'pages/help'
+   get 'favorites/index'
 
-  get 'users/new'
-  resources 'users'
-  resources 'topics'
+   get 'sessions/new'
 
-  get      '/login',     to: 'sessions#new'
-  post     '/login',     to: 'sessions#create'
-  delete   '/logout',    to: 'sessions#destroy'
+   root 'pages#index'
+   get 'pages/help'
 
+   get    '/login',   to: 'sessions#new'
+   post   '/login',   to: 'sessions#create'
+   delete '/logout',  to: 'sessions#destroy'
+
+   resources 'users'
+   resources 'topics'
+   post '/favorites', to: 'favorites#create'
+   get '/favorites', to: 'favorites#index'
 
 
 end
